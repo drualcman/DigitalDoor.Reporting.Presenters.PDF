@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.15.53" />
+
+		<PackageReference Include="DigitalDoor.Reporting.Entities" Version="1.15.53" />
+
+		<PackageReference Include="DigitalDoor.Reporting.Helpers" Version="1.14.52" />
+		<PackageReference Include="itext7" Version="8.0.4" />
+		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
+	</ItemGroup>
+</Project>

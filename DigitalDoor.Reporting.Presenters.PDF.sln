@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalDoor.Reporting.Presenters.PDF", "src\DigitalDoor.Reporting.Presenters.PDF\DigitalDoor.Reporting.Presenters.PDF.csproj", "{798D5849-FA10-41D2-A6EF-31CDCA9B917A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{798D5849-FA10-41D2-A6EF-31CDCA9B917A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798D5849-FA10-41D2-A6EF-31CDCA9B917A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798D5849-FA10-41D2-A6EF-31CDCA9B917A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798D5849-FA10-41D2-A6EF-31CDCA9B917A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7089381-4425-47AB-9FAE-336E8FAF2553}
+	EndGlobalSection
+EndGlobal
