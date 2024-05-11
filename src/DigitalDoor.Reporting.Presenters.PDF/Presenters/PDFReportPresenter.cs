@@ -1,12 +1,6 @@
-﻿using DigitalDoor.Reporting.Entities.Interfaces;
-using DigitalDoor.Reporting.Entities.ViewModels;
-using DigitalDoor.Reporting.Interfaces;
-using DigitalDoor.Reporting.Presenters.PDF.PDFService;
-using DigitalDoor.Reporting.Presenters.PDF.Utilities;
+﻿namespace DigitalDoor.Reporting.Presenters.PDF.Presenters;
 
-namespace DigitalDoor.Reporting.Presenters.PDF.Presenters;
-
-internal class PDFReportPresenter : IPDFReportPresenter, IPDFReportOutputPort
+internal class PDFReportPresenter : IPDFReportPresenter, IPDFReportOutputPort, IReportAsBytes<PDFReportPresenter>
 {
 
     public PDFReportPresenter(IReportFont reportFont)
@@ -25,5 +19,11 @@ internal class PDFReportPresenter : IPDFReportPresenter, IPDFReportOutputPort
         TextPDF PDF = new(report);
         Report = await PDF.CreatePDFReport();
         FontService.DisposeFont();
+    }
+
+    public async Task<byte[]> GenerateReport(ReportViewModel report)
+    {
+        await Handle(report);
+        return Report;
     }
 }

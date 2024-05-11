@@ -2,14 +2,12 @@
 
 public static class ServicesDependency
 {
-    public static IServiceCollection AddReportingServices(this IServiceCollection services)
+    public static IServiceCollection AddReportingPresenterPdfServices(this IServiceCollection services)
     {
-        services.TryAddScoped<PDFReportPresenter>();
-        services.TryAddScoped<IPDFReportOutputPort>(service => service.GetService<PDFReportPresenter>());
-        services.TryAddScoped<IPDFReportPresenter>(services => services.GetService<PDFReportPresenter>());
+        services.AddReportingServices();
 
+        services.TryAddScoped<IReportAsBytes<PDFReportPresenter>, PDFReportPresenter>();
         services.TryAddScoped<IReportAsBytes, PDFReportController>();
-
         return services;
     }
 }

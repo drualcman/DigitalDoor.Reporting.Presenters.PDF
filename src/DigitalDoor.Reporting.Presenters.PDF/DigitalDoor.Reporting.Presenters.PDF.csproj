@@ -1,18 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageLicenseFile>License.txt</PackageLicenseFile>
+		<Authors>Sergi Ortiz Gomez, Daniel Rosas Mialma</Authors>
+		<Company>DIGITAL DOOR Pty Ltd</Company>
+		<Description>Generate reports from code using clean architecture. Can be used in backend API, in Blazor Server, Blazor Web Assembly, MVC and any .NET Core application.</Description>
+		<Copyright>DIGITAL DOOR Pty Ltd 2022</Copyright>
+		<PackageProjectUrl>https://digitaldoor.com.au/</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
+		<PackageReleaseNotes>
+			2024-05-11: Splited from DigitalDoor Reporting to follow SPR and OCR to avoid unnecesary dependencies in the main project.
+		</PackageReleaseNotes>
+		<Version>1.16.54</Version>
+		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.PDF</RepositoryUrl>
+		<Title>Generate pdf from code using clean architecture</Title>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>DRIcon.png</PackageIcon>
+	</PropertyGroup>
 
 	<ItemGroup>
-
-		<PackageReference Include="DigitalDoor.Reporting" Version="1.15.53" />
-
-		<PackageReference Include="DigitalDoor.Reporting.Entities" Version="1.15.53" />
-
-		<PackageReference Include="DigitalDoor.Reporting.Helpers" Version="1.14.52" />
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.54" />
 		<PackageReference Include="itext7" Version="8.0.4" />
-		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" Condition="'$(TargetFramework)' == 'net8.0'" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Include="..\..\DRIcon.png" Link="DRIcon.png">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+		<None Include="..\..\License.txt">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
 	</ItemGroup>
 </Project>

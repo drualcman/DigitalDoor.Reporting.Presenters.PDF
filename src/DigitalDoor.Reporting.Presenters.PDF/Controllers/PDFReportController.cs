@@ -1,20 +1,11 @@
-﻿using DigitalDoor.Reporting.Entities.ViewModels;
-
-namespace DigitalDoor.Reporting.Presenters.PDF.Controllers;
+﻿namespace DigitalDoor.Reporting.Presenters.PDF.Controllers;
 internal class PDFReportController : IReportAsBytes
 {
-    readonly IPDFReportOutputPort OutputPort;
-    readonly IPDFReportPresenter Presenter;
+    readonly IReportAsBytes<PDFReportPresenter> Presenter;
 
-    public PDFReportController(IPDFReportOutputPort outputPort, IPDFReportPresenter presenter)
-    {
-        OutputPort = outputPort;
+    public PDFReportController(IReportAsBytes<PDFReportPresenter> presenter) =>
         Presenter = presenter;
-    }
 
-    public async Task<byte[]> GenerateReport(ReportViewModel reportModel)
-    {
-        await OutputPort.Handle(reportModel);
-        return Presenter.Report;
-    }
+    public async Task<byte[]> GenerateReport(ReportViewModel reportModel) =>
+        await Presenter.GenerateReport(reportModel);
 }
