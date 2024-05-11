@@ -1,4 +1,4 @@
-﻿namespace DigitalDoor.Reporting.Presenters.PDF;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServicesDependency
 {
