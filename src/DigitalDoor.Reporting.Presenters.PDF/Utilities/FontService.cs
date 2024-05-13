@@ -1,6 +1,4 @@
-﻿using DigitalDoor.Reporting.Interfaces;
-
-namespace DigitalDoor.Reporting.Presenters.PDF.Utilities
+﻿namespace DigitalDoor.Reporting.Presenters.PDF.Utilities
 {
     internal static class FontService
     {

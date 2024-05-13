@@ -6,3 +6,4 @@ global using DigitalDoor.Reporting.Entities.ViewModels;
 global using DigitalDoor.Reporting.Interfaces;
 global using DigitalDoor.Reporting.Presenters.PDF.PDFService;
 global using DigitalDoor.Reporting.Presenters.PDF.Utilities;
+global using DigitalDoor.Reporting.Presenters.PDF.Common;

@@ -1,5 +1,4 @@
 ﻿using DigitalDoor.Reporting.Entities.Models;
-using DigitalDoor.Reporting.Entities.ViewModels;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
@@ -40,8 +39,8 @@ internal class TextPDF
         using MemoryStream OutputStream = new MemoryStream();
         PdfWriter PdfWriter = new PdfWriter(OutputStream);
         PdfDocument PdfDocument = new PdfDocument(PdfWriter);
-        PageSize Size = new PageSize(Helper.MillimeterToPixel(ReportViewModel.Page.Dimension.Width),
-            Helper.MillimeterToPixel(ReportViewModel.Page.Dimension.Height));
+        PageSize Size = new PageSize(MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Dimension.Width),
+            MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Dimension.Height));
         if (ReportViewModel.Page.Orientation == Report.Orientation.Landscape)
         {
             Size = Size.Rotate();
@@ -54,8 +53,8 @@ internal class TextPDF
     private async Task CreateDocument(PdfDocument pdfDocument)
     {
         Document Document = new Document(pdfDocument);
-        Document.SetMargins(Helper.MillimeterToPixel(ReportViewModel.Page.Margin.Top), Helper.MillimeterToPixel(ReportViewModel.Page.Margin.Right),
-            Helper.MillimeterToPixel(ReportViewModel.Page.Margin.Bottom), Helper.MillimeterToPixel(ReportViewModel.Page.Margin.Left));
+        Document.SetMargins(MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Margin.Top), MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Margin.Right),
+            MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Margin.Bottom), MillimeterMath.MillimeterToPixel(ReportViewModel.Page.Margin.Left));
         await SetContentDocument(Document);
         Document.Close();
     }

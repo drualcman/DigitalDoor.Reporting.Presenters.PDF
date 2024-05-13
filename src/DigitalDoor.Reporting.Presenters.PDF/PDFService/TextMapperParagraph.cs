@@ -14,8 +14,8 @@ internal class TextMapperParagraph : TextMapperBase
     public Paragraph SetParagraph(string textValue, ColumnContent item, decimal height, decimal width)
     {
         Paragraph Text = new Paragraph();
-        Text.SetMinHeight(MillimeterToPixel(item.Column.Format.Dimension.Height + 1));
-        Text.SetMinWidth(MillimeterToPixel(item.Column.Format.Dimension.Width + 1));
+        Text.SetMinHeight(MillimeterMath.MillimeterToPixel(item.Column.Format.Dimension.Height + 1));
+        Text.SetMinWidth(MillimeterMath.MillimeterToPixel(item.Column.Format.Dimension.Width + 1));
         SetDimensions(Text, item.Column.Format);
         SetMargins(Text, item.Column.Format);
         SetPaddings(Text, item.Column.Format);
@@ -64,9 +64,9 @@ internal class TextMapperParagraph : TextMapperBase
             _ => TextAlignment.LEFT,
         };
         Text.SetTextAlignment(Aligment);
-        Text.SetFixedPosition(MillimeterToPixel(item.Column.Format.Position.Left + width),
-                      MillimeterToPixel(height - (item.Column.Format.Position.Top + (decimal)(item.Column.Format.FontDetails.ColorSize.Width * 0.53))),
-                      MillimeterToPixel(item.Column.Format.Dimension.Width));
+        Text.SetFixedPosition(MillimeterMath.MillimeterToPixel(item.Column.Format.Position.Left + width),
+                      MillimeterMath.MillimeterToPixel(height - (item.Column.Format.Position.Top + (decimal)(item.Column.Format.FontDetails.ColorSize.Width * 0.53))),
+                      MillimeterMath.MillimeterToPixel(item.Column.Format.Dimension.Width));
         Text.SetRotationAngle(ConvertAngleToRadian(item.Column.Format.Angle));
         if (item.Column.Format.Background.ToLower() != "transparent")
         {

@@ -11,15 +11,7 @@ internal class TextMapperBase : TextHelper
 {
     protected Color GetColor(string color)
     {
-        System.Drawing.Color drawColor;
-        if (color.Contains('#'))
-        {
-            drawColor = System.Drawing.ColorTranslator.FromHtml(color);
-        }
-        else
-        {
-            drawColor = System.Drawing.Color.FromName(color);
-        }
+        System.Drawing.Color drawColor = ColorTranslatorHelper.GetColor(color);
         return new DeviceRgb(drawColor);
     }
 
@@ -42,13 +34,13 @@ internal class TextMapperBase : TextHelper
     {
         BorderStyle style = format.Borders.Style;
         if (format.Borders.Bottom.Width > 0)
-            element.SetBorderBottom(GetBorder(style, MillimeterToPixel(format.Borders.Bottom.Width), format.Borders.Bottom.Colour));
+            element.SetBorderBottom(GetBorder(style, MillimeterMath.MillimeterToPixel(format.Borders.Bottom.Width), format.Borders.Bottom.Colour));
         if (format.Borders.Top.Width > 0)
-            element.SetBorderTop(GetBorder(style, MillimeterToPixel(format.Borders.Top.Width), format.Borders.Top.Colour));
+            element.SetBorderTop(GetBorder(style, MillimeterMath.MillimeterToPixel(format.Borders.Top.Width), format.Borders.Top.Colour));
         if (format.Borders.Right.Width > 0)
-            element.SetBorderRight(GetBorder(style, MillimeterToPixel(format.Borders.Right.Width), format.Borders.Right.Colour));
+            element.SetBorderRight(GetBorder(style, MillimeterMath.MillimeterToPixel(format.Borders.Right.Width), format.Borders.Right.Colour));
         if (format.Borders.Left.Width > 0)
-            element.SetBorderLeft(GetBorder(style, MillimeterToPixel(format.Borders.Left.Width), format.Borders.Left.Colour));
+            element.SetBorderLeft(GetBorder(style, MillimeterMath.MillimeterToPixel(format.Borders.Left.Width), format.Borders.Left.Colour));
         SetRadius(element, format);
     }
 
@@ -63,9 +55,9 @@ internal class TextMapperBase : TextHelper
         {
             Div Background = new Div();
             Background.SetBackgroundColor(GetColor(color));
-            Background.SetHeight(MillimeterToPixel(heightBackground));
+            Background.SetHeight(MillimeterMath.MillimeterToPixel(heightBackground));
             Background.SetPageNumber(positionPage);
-            Background.SetFixedPosition(0, MillimeterToPixel(top), page.GetPdfDocument().GetDefaultPageSize().GetWidth());
+            Background.SetFixedPosition(0, MillimeterMath.MillimeterToPixel(top), page.GetPdfDocument().GetDefaultPageSize().GetWidth());
             page.Add(Background);
         }
     }
