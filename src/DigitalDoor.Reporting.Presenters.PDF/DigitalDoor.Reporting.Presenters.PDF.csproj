@@ -24,6 +24,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1" />
 		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.54" />
 		<PackageReference Include="itext7" Version="8.0.4" />
 		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
