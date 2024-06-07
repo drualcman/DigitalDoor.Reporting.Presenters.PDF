@@ -13,11 +13,12 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
 		<PackageReleaseNotes>
+			2024-06-07: Update Nuget.
 			2024-05-12: Update Nuget.
 			2024-05-12: Add missing dependency from itext7.bouncy-castle-adapter.
 			2024-05-11: Splited from DigitalDoor Reporting to follow SPR and OCR to avoid unnecesary dependencies in the main project.
 		</PackageReleaseNotes>
-		<Version>1.16.56</Version>
+		<Version>1.16.57</Version>
 		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.PDF</RepositoryUrl>
 		<Title>Generate pdf from code using clean architecture</Title>
 		<RepositoryType>git</RepositoryType>
@@ -25,8 +26,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1" />
-		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.56" />
+		<PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.57" />
 		<PackageReference Include="itext7" Version="8.0.4" />
 		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.4" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />

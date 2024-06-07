@@ -54,7 +54,6 @@ internal class TextHelper
                 {
                     if (Data.Value != null)
                     {
-
                         if (ImageValidator.IsLikelyImage(Data.Value.ToString()))
                         {
                             JsonElement JsonValue = (JsonElement)Data.Value;
