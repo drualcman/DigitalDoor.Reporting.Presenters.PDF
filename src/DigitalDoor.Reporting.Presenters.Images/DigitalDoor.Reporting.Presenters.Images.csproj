@@ -13,6 +13,7 @@
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
 	  <PackageReleaseNotes>
+		  2024-10-10: Update Nuget.
 		  2024-06-07: Update Nuget.
 		  2024-05-12: First release with convert to JPG.
 	  </PackageReleaseNotes>
@@ -27,7 +28,7 @@
 	<ItemGroup>
 		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.57" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" Condition="'$(TargetFramework)' == 'net8.0'" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
 	</ItemGroup>
 
 	<ItemGroup>
