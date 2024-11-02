@@ -1,5 +1,4 @@
-﻿using DigitalDoor.Reporting.Entities.ValueObjects;
-using iText.IO.Image;
+﻿using iText.IO.Image;
 using iText.Layout.Element;
 
 namespace DigitalDoor.Reporting.Presenters.PDF.PDFService;

@@ -1,13 +1,14 @@
 ﻿namespace DigitalDoor.Reporting.Presenters.PDF.Common;
 internal static class MillimeterMath
 {
+    const int DPI = 75;
     public static float MillimeterToPixel(double milimiter)
     {
-        return (float)(milimiter * 2.83);
+        return MeasurementConverter.MillimetersToPixels(milimiter, DPI);
     }
 
     public static float MillimeterToPixel(decimal milimiter)
     {
-        return (float)((double)milimiter * 2.83);
+        return MeasurementConverter.MillimetersToPixels(milimiter, DPI);
     }
 }

@@ -30,7 +30,7 @@ internal class TextMapperParagraph : TextMapperBase
             Text.SetItalic();
         }
         Text.SetFontColor(Color);
-        Text.SetFontSize((float)item.Column.Format.FontDetails.ColorSize.Width);
+        Text.SetFontSize(MillimeterMath.MillimeterToPixel(item.Column.Format.FontDetails.ColorSize.Width) / 4);
         try
         {
 

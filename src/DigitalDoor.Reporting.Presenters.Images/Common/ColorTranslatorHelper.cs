@@ -1,17 +1,18 @@
 ﻿namespace DigitalDoor.Reporting.Presenters.Images.Common;
 internal static class ColorTranslatorHelper
 {
-    public static System.Drawing.Color GetColor(string color)
+    internal static SKColor ConvertToSKColor(string color)
     {
-        System.Drawing.Color drawColor;
-        if (color.Contains('#'))
+        color = ColorTranslator.ConvertToHexColor(color);
+        return ConvertHexToSKColor(CssColors.ColorToHex(color));
+    }
+
+    private static SKColor ConvertHexToSKColor(string hex)
+    {
+        if (hex.Length == 4)
         {
-            drawColor = System.Drawing.ColorTranslator.FromHtml(color);
+            hex = $"#{hex[1]}{hex[1]}{hex[2]}{hex[2]}{hex[3]}{hex[3]}";
         }
-        else
-        {
-            drawColor = System.Drawing.Color.FromName(color);
-        }
-        return drawColor;
+        return SKColor.Parse(hex);
     }
 }

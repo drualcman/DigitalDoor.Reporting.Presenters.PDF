@@ -11,8 +11,8 @@ internal class TextMapperBase : TextHelper
 {
     protected Color GetColor(string color)
     {
-        System.Drawing.Color drawColor = ColorTranslatorHelper.GetColor(color);
-        return new DeviceRgb(drawColor);
+        RgbColors drawColor = ColorTranslatorHelper.GetColor(color);
+        return new DeviceRgb(drawColor.R,drawColor.G,drawColor.B);
     }
 
     protected iText.Layout.Borders.Border GetBorder(BorderStyle style, double width, string color)
