@@ -33,7 +33,7 @@
 		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.59" />
 		<PackageReference Include="itext7" Version="8.0.5" />
 		<PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.5" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net6.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
 	</ItemGroup>
 
