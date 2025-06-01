@@ -1,13 +1,4 @@
-﻿using DigitalDoor.Reporting.Entities.Helpers;
-using DigitalDoor.Reporting.Entities.Interfaces;
-using DigitalDoor.Reporting.Entities.Models;
-using DigitalDoor.Reporting.Entities.ValueObjects;
-using DigitalDoor.Reporting.Entities.ViewModels;
-using DigitalDoor.Reporting.Presenters.Images.Common;
-using SkiaSharp;
-using System.Text.Json;
-
-namespace DigitalDoor.Reporting.Presenters.Images;
+﻿namespace DigitalDoor.Reporting.Presenters.Images;
 
 public class JPGPresenter : IReportAsBytes<JPGPresenter>
 {
@@ -34,22 +25,22 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
 
     private void DrawItems(SKCanvas canvas, List<ColumnSetup> items, ReportViewModel reportModel)
     {
-        foreach (var item in items)
+        foreach(var item in items)
         {
             var data = reportModel.GetColumnData(item.DataColumn);
             var format = item.Format;
             float xPos = MeasurementConverter.MillimetersToPixels(format.Position.Left, DPI);
             float yPos = MeasurementConverter.MillimetersToPixels(format.Position.Top, DPI);
 
-            if (ImageValidator.IsLikelyImage(data.Value.ToString()))
+            if(ImageValidator.IsLikelyImage(data.Value.ToString()))
             {
                 var jsonValue = (JsonElement)data.Value;
-                if (jsonValue.TryGetBytesFromBase64(out var image))
+                if(jsonValue.TryGetBytesFromBase64(out var image))
                 {
                     AddBytesToCanvas(canvas, image, xPos, yPos, format.Dimension, format.Borders);
                 }
             }
-            else if (data?.Value is byte[] imageBytes)
+            else if(data?.Value is byte[] imageBytes)
             {
                 AddBytesToCanvas(canvas, imageBytes, xPos, yPos, format.Dimension, format.Borders);
             }
@@ -75,7 +66,7 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
     }
 
     private void DrawTextWithRoundedBackground(SKCanvas canvas, string text, Format format, float xPos, float yPos, Dimension dimensions)
-    {      
+    {
         float textSizePx = MeasurementConverter.MillimetersToPixels(format.FontDetails.ColorSize.Width, DPI / 4);
 
         SKPaint p = new SKPaint();
@@ -110,7 +101,7 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
         float rightX = rect.Right;
         float bottomY = rect.Bottom;
 
-        using (var topPaint = new SKPaint
+        using(var topPaint = new SKPaint
         {
             Color = ColorTranslatorHelper.ConvertToSKColor(borders.Top.Colour),
             StrokeWidth = (float)borders.Top.Width,
@@ -120,7 +111,7 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
             canvas.DrawLine(leftX, topY, rightX, topY, topPaint);
         }
 
-        using (var bottomPaint = new SKPaint
+        using(var bottomPaint = new SKPaint
         {
             Color = ColorTranslatorHelper.ConvertToSKColor(borders.Bottom.Colour),
             StrokeWidth = (float)borders.Bottom.Width,
@@ -130,7 +121,7 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
             canvas.DrawLine(leftX, bottomY, rightX, bottomY, bottomPaint);
         }
 
-        using (var leftPaint = new SKPaint
+        using(var leftPaint = new SKPaint
         {
             Color = ColorTranslatorHelper.ConvertToSKColor(borders.Left.Colour),
             StrokeWidth = (float)borders.Left.Width,
@@ -140,7 +131,7 @@ public class JPGPresenter : IReportAsBytes<JPGPresenter>
             canvas.DrawLine(leftX, topY, leftX, bottomY, leftPaint);
         }
 
-        using (var rightPaint = new SKPaint
+        using(var rightPaint = new SKPaint
         {
             Color = ColorTranslatorHelper.ConvertToSKColor(borders.Right.Colour),
             StrokeWidth = (float)borders.Right.Width,

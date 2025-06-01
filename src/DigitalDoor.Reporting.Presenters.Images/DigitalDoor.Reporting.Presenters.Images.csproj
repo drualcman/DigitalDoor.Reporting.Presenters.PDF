@@ -4,21 +4,22 @@
 	  <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	  <PackageLicenseFile>License.txt</PackageLicenseFile>
+	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	  <Authors>Sergi Ortiz Gomez</Authors>
 	  <Company>DIGITAL DOOR Pty Ltd</Company>
-	  <Description>Generate reports from code using clean architecture. Can be used in backend API, in Blazor Server, Blazor Web Assembly, MVC and any .NET Core application.</Description>
+	  <Description>Generate reports as image from code using clean architecture. Can be used in backend API, in Blazor Server, Blazor Web Assembly, MVC and any .NET Core application.</Description>
 	  <Copyright>DIGITAL DOOR Pty Ltd 2022</Copyright>
 	  <PackageProjectUrl>https://digitaldoor.com.au/</PackageProjectUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
 	  <PackageReleaseNotes>
+		  2025-06-01: Update license and dependencies.
 		  2024-11-02: Improved conver mm to px. Improved convert to RGB colour. Update Nuget.
 		  2024-10-10: Update Nuget.
 		  2024-06-07: Update Nuget.
 		  2024-05-12: First release with convert to JPG.
 	  </PackageReleaseNotes>
-	  <Version>1.16.58</Version>
+	  <Version>1.16.59</Version>
 	  <RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.PDF</RepositoryUrl>
 	  <Title>Generate report images from code using clean architecture</Title>
 	  <RepositoryType>git</RepositoryType>
@@ -27,11 +28,11 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.59" />
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.16.60" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" Condition="'$(TargetFramework)' == 'net9.0'" />
-		<PackageReference Include="SkiaSharp" Version="2.88.9" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" Condition="'$(TargetFramework)' == 'net9.0'" />
+		<PackageReference Include="SkiaSharp" Version="3.119.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,7 +40,7 @@
 			<PackagePath>\</PackagePath>
 			<Pack>True</Pack>
 		</None>
-		<None Include="..\..\License.txt">
+		<None Include="LICENSE.txt">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>

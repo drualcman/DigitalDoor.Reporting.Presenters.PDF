@@ -1,5 +1,4 @@
-﻿using DigitalDoor.Reporting.Presenters.PDF.Utilities;
-using iText.IO.Font;
+﻿using iText.IO.Font;
 using iText.IO.Font.Constants;
 using iText.Kernel.Colors;
 using iText.Kernel.Font;
@@ -21,13 +20,13 @@ internal class TextMapperParagraph : TextMapperBase
         SetPaddings(Text, item.Column.Format);
         SetBorders(Text, item.Column.Format);
         Color Color = GetColor(item.Column.Format.FontDetails.ColorSize.Colour.ToLower());
-        if (item.Column.Format.FontDetails.FontStyle.Bold > 599)
+        if(item.Column.Format.FontDetails.FontStyle.Bold > 599)
         {
-            Text.SetBold();
+            Text.SimulateBold();
         }
-        if (item.Column.Format.FontDetails.FontStyle.Italic)
+        if(item.Column.Format.FontDetails.FontStyle.Italic)
         {
-            Text.SetItalic();
+            Text.SimulateItalic();
         }
         Text.SetFontColor(Color);
         Text.SetFontSize(MillimeterMath.MillimeterToPixel(item.Column.Format.FontDetails.ColorSize.Width) / 4);
@@ -36,7 +35,7 @@ internal class TextMapperParagraph : TextMapperBase
 
             PdfFont Font;
             string FontName = item.Column.Format.FontDetails.FontName;
-            if (StandardFonts.IsStandardFont(FontName) || FontName == "Arial")
+            if(StandardFonts.IsStandardFont(FontName) || FontName == "Arial")
             {
                 Font = FontName switch
                 {
@@ -47,7 +46,7 @@ internal class TextMapperParagraph : TextMapperBase
             }
             else
             {
-                if (FontService.ReportFont != null)
+                if(FontService.ReportFont != null)
                 {
                     byte[] BytesFont = FontService.ReportFont.GetFontBytesArray(FontName);
                     Font = PdfFontFactory.CreateFont(BytesFont, PdfEncodings.WINANSI, PdfFontFactory.EmbeddingStrategy.FORCE_NOT_EMBEDDED);
@@ -68,7 +67,7 @@ internal class TextMapperParagraph : TextMapperBase
                       MillimeterMath.MillimeterToPixel(height - (item.Column.Format.Position.Top + (decimal)(item.Column.Format.FontDetails.ColorSize.Width * 0.53))),
                       MillimeterMath.MillimeterToPixel(item.Column.Format.Dimension.Width));
         Text.SetRotationAngle(ConvertAngleToRadian(item.Column.Format.Angle));
-        if (item.Column.Format.Background.ToLower() != "transparent")
+        if(item.Column.Format.Background.ToLower() != "transparent")
         {
             Text.SetBackgroundColor(GetColor(item.Column.Format.Background));
         }
