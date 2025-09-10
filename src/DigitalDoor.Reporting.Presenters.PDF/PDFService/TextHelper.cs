@@ -30,7 +30,7 @@ internal class TextHelper
 
     public List<ColumnContent> GetElements(List<ColumnSetup> setups, List<ColumnData> data)
     {
-        List<ColumnContent> Elements = default;
+        List<ColumnContent> Elements = new();
         if (data.Count > 0)
         {
             Elements = GetColumnsContent(setups, data);
