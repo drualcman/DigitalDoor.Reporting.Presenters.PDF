@@ -3,7 +3,7 @@ To create a PDF need to manage the report ViewModel using a Handler and then use
 ``` csharp
     class SomeClass
     {
-        readonly IReportAsBytes ReportBytes;                //using default implementation
+        readonly IReportAsBytes ReportBytes;                //using default implementation, recommended
         public SomeClass(IReportAsBytes reportPdf)
         {
             ReportBytes = reportPdf;
@@ -18,7 +18,7 @@ To create a PDF need to manage the report ViewModel using a Handler and then use
 
     class SomeClass
     {
-        readonly IReportAsBytes<PDFReportPresenter> ReportBytes;                //using PDF implementation, recommended
+        readonly IReportAsBytes<PDFReportPresenter> ReportBytes;                //using own PDF implementation
         public SomeClass(IReportAsBytes<PDFReportPresenter> reportPdf)
         {
             ReportBytes = reportPdf;
