@@ -69,10 +69,11 @@ internal class TextPDF
         elementsWorker.Add(Task.Run(() => FooterElements = Helper.GetElements(ReportViewModel.Footer.Items, ReportViewModel.Data.Where(d => d.Section == Report.SectionType.Footer).ToList())));
         elementsWorker.Add(Task.Run(() => BodyRows = Helper.GetElements(ReportViewModel.Body.Items, ReportViewModel.Data.Where(d => d.Section == Report.SectionType.Body).ToList())));
         await Task.WhenAll(elementsWorker);
-        int RowsByPages = (int)(ReportViewModel.Body.Format.Dimension.Height / ReportViewModel.Body.Row.Dimension.Height);
         decimal HeightBodyElement = HeightBody;
         int ColumnsNumber = ReportViewModel.Body.ColumnsNumber;
-        List<List<ColumnContent>> Pages = Helper.Split(BodyRows, RowsByPages);
+        //int RowsByPages = (int)(ReportViewModel.Body.Format.Dimension.Height / ReportViewModel.Body.Row.Dimension.Height);
+        //List<List<ColumnContent>> Pages = Helper.Split(BodyRows, RowsByPages);
+        List<List<ColumnContent>> Pages = Helper.Split(BodyRows, TotalPages);
         int PageNumber = 1;
         decimal ColumnWeight = 0;
         int page = 0;

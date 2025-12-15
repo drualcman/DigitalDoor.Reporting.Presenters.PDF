@@ -1,9 +1,0 @@
-global using DigitalDoor.Reporting.Entities.Helpers;
-global using DigitalDoor.Reporting.Entities.Interfaces;
-global using DigitalDoor.Reporting.Entities.Models;
-global using DigitalDoor.Reporting.Entities.ValueObjects;
-global using DigitalDoor.Reporting.Entities.ViewModels;
-global using DigitalDoor.Reporting.Helpers;
-global using DigitalDoor.Reporting.Presenters.Images.Common;
-global using SkiaSharp;
-global using System.Text.Json;
