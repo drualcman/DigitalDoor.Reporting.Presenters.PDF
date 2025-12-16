@@ -71,9 +71,8 @@ internal class TextPDF
         await Task.WhenAll(elementsWorker);
         decimal HeightBodyElement = HeightBody;
         int ColumnsNumber = ReportViewModel.Body.ColumnsNumber;
-        //int RowsByPages = (int)(ReportViewModel.Body.Format.Dimension.Height / ReportViewModel.Body.Row.Dimension.Height);
-        //List<List<ColumnContent>> Pages = Helper.Split(BodyRows, RowsByPages);
-        List<List<ColumnContent>> Pages = Helper.Split(BodyRows, TotalPages);
+        int RowsByPages = (int)(ReportViewModel.Body.Format.Dimension.Height / ReportViewModel.Body.Row.Dimension.Height);
+        List<List<ColumnContent>> Pages = Helper.Split(BodyRows, RowsByPages);
         int PageNumber = 1;
         decimal ColumnWeight = 0;
         int page = 0;
@@ -94,6 +93,7 @@ internal class TextPDF
             await Task.WhenAll(columnWorker);
             page++;
         } while (page < Pages.Count);
+
     }
 
     private Task DrawBackground(Document page, int pageNumber)

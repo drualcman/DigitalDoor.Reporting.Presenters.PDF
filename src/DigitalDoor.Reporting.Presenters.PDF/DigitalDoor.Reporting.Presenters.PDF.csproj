@@ -13,7 +13,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
 		<PackageReleaseNotes>
-			2025-10-22: Add support NET 10. Update dependencies.
+			2025-12-16: Fixed N blank pages. Update dependencies.
+			2025-12-15: Add support NET 10. Update dependencies.
 			2025-10-22: Update dependencies.
 			2025-09-13: Fixed index out of range if no header, body or footer columns. Update documentation.
 			2025-09-10: Update dependencies.
@@ -26,7 +27,7 @@
 			2024-05-12: Add missing dependency from itext7.bouncy-castle-adapter.
 			2024-05-11: Splited from DigitalDoor Reporting to follow SPR and OCR to avoid unnecesary dependencies in the main project.
 		</PackageReleaseNotes>
-		<Version>1.17.70</Version>
+		<Version>1.17.71</Version>
 		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.PDF</RepositoryUrl>
 		<Title>Generate pdf from code using clean architecture</Title>
 		<RepositoryType>git</RepositoryType>
@@ -35,16 +36,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
-		<PackageReference Include="DigitalDoor.Reporting" Version="1.17.70" />
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.17.71" />
 		<PackageReference Include="itext" Version="9.4.0" />
 		<PackageReference Include="itext.bouncy-castle-adapter" Version="9.4.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.11" Condition="'$(TargetFramework)' == 'net9.0'" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.1" Condition="'$(TargetFramework)' == 'net9.0'" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.1" Condition="'$(TargetFramework)' == 'net10.0'" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 		<None Include="..\..\DRIcon.png" Link="DRIcon.png">
