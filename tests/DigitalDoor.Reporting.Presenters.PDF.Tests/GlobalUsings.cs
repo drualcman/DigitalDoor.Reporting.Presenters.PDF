@@ -1,0 +1,9 @@
+global using DigitalDoor.Reporting.Entities.Helpers;
+global using DigitalDoor.Reporting.Entities.Interfaces;
+global using DigitalDoor.Reporting.Entities.Models;
+global using DigitalDoor.Reporting.Entities.ValueObjects;
+global using DigitalDoor.Reporting.Entities.ViewModels;
+global using DigitalDoor.Reporting.Interfaces;
+global using DigitalDoor.Reporting.Presenters.PDF.Tests.Support;
+global using Microsoft.Extensions.DependencyInjection;
+global using Xunit;

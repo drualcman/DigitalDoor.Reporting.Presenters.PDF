@@ -1,29 +1,30 @@
-﻿namespace DigitalDoor.Reporting.Presenters.PDF.Presenters;
+namespace DigitalDoor.Reporting.Presenters.PDF.Presenters;
 
 internal class PDFReportPresenter : IPDFReportPresenter, IPDFReportOutputPort, IReportAsBytes<PDFReportPresenter>
 {
+    private readonly IReportFont ReportFont;
 
     public PDFReportPresenter(IReportFont reportFont)
     {
-        FontService.GetReportFont(reportFont);
+        ReportFont = reportFont;
     }
-    public PDFReportPresenter()
-    {
 
+    public PDFReportPresenter() : this(null)
+    {
     }
 
     public byte[] Report { get; private set; }
 
-    public async Task Handle(ReportViewModel report)
+    public Task Handle(ReportViewModel report)
     {
-        TextPDF PDF = new(report);
-        Report = await PDF.CreatePDFReport();
-        FontService.DisposeFont();
+        Report = PdfReportRenderer.Render(report, ReportFont);
+        return Task.CompletedTask;
     }
 
-    public async Task<byte[]> GenerateReport(ReportViewModel report)
+    public Task<byte[]> GenerateReport(ReportViewModel report)
     {
-        await Handle(report);
-        return Report;
+        byte[] pdf = PdfReportRenderer.Render(report, ReportFont);
+        Report = pdf;
+        return Task.FromResult(pdf);
     }
 }

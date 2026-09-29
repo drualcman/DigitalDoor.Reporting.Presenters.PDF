@@ -1,14 +1,16 @@
-﻿namespace DigitalDoor.Reporting.Presenters.PDF.Common;
+namespace DigitalDoor.Reporting.Presenters.PDF.Common;
+
 internal static class MillimeterMath
 {
-    const int DPI = 75;
-    public static float MillimeterToPixel(double milimiter)
+    public const float PdfPointsPerInch = 72f;
+
+    public static float MillimeterToPoint(double millimeters)
     {
-        return MeasurementConverter.MillimetersToPixels(milimiter, DPI);
+        return MeasurementConverter.MillimetersToPixels(millimeters, PdfPointsPerInch);
     }
 
-    public static float MillimeterToPixel(decimal milimiter)
+    public static float MillimeterToPoint(decimal millimeters)
     {
-        return MeasurementConverter.MillimetersToPixels(milimiter, DPI);
+        return MeasurementConverter.MillimetersToPixels(millimeters, PdfPointsPerInch);
     }
 }

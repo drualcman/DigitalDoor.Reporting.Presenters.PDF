@@ -1,0 +1,44 @@
+@page "/"
+@using DigitalDoor.Reporting.Entities.Interfaces
+@using DigitalDoor.Reporting.Entities.ViewModels
+@using DigitalDoor.Reporting.Presenters.PDF.Samples
+@inject IReportsOutputPort ReportsOutputPort
+@inject IReportsPresenter ReportsPresenter
+@inject IReportAsBytes ReportAsBytes
+
+<PageTitle>PDF in Blazor WebAssembly</PageTitle>
+
+<h1>PDF generated in the browser</h1>
+
+<p id="pdf-status">@Status</p>
+
+@if (PdfDataUri is not null)
+{
+    <a href="@PdfDataUri" download="blazor-wasm-report.pdf">Download PDF</a>
+}
+
+@code {
+    private string Status = "Generating...";
+    private string PdfDataUri;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+                await ReportsOutputPort.Handle(SampleReportSetupFactory.CreatePortraitSetup(), SampleReportDataFactory.CreateData(60, true));
+                ReportViewModel reportViewModel = ReportsPresenter.Content;
+                byte[] pdf = await ReportAsBytes.GenerateReport(reportViewModel);
+                PdfDataUri = $"data:application/pdf;base64,{Convert.ToBase64String(pdf)}";
+                Status = $"PDF-OK bytes={pdf.Length} pages={reportViewModel.Pages} ms={stopwatch.ElapsedMilliseconds}";
+            }
+            catch (Exception exception)
+            {
+                Status = $"PDF-ERROR {exception}";
+            }
+            StateHasChanged();
+        }
+    }
+}
