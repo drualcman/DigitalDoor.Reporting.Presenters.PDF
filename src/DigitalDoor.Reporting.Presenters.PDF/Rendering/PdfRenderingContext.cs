@@ -6,10 +6,12 @@ internal sealed class PdfRenderingContext : IDisposable
     private readonly List<ReportImage> ImagesWithoutCache = new();
 
     public ReportTypefaceProvider Typefaces { get; }
+    public ReportSvgTypefaceProvider SvgTypefaces { get; }
 
     public PdfRenderingContext(IReportFont reportFont)
     {
         Typefaces = new ReportTypefaceProvider(reportFont);
+        SvgTypefaces = new ReportSvgTypefaceProvider(Typefaces);
     }
 
     public ReportImage GetOrCreateImage(object sourceValue, Func<ReportImage> createImage)

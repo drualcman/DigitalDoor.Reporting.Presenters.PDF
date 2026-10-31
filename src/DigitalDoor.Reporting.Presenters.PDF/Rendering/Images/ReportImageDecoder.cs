@@ -1,4 +1,5 @@
 using Svg.Skia;
+using Svg.Skia.TypefaceProviders;
 
 namespace DigitalDoor.Reporting.Presenters.PDF.Rendering.Images;
 
@@ -11,9 +12,10 @@ internal static class ReportImageDecoder
         return ReportImage.FromOwnedRaster(rasterImage);
     }
 
-    public static ReportImage DecodeSvg(string svgMarkup, string columnDescription)
+    public static ReportImage DecodeSvg(string svgMarkup, string columnDescription, ITypefaceProvider typefaceProvider)
     {
         SKSvg svgDocument = new SKSvg();
+        svgDocument.Settings.TypefaceProviders = new List<ITypefaceProvider> { typefaceProvider };
         SKPicture picture = LoadSvgPicture(svgDocument, svgMarkup);
         if (picture is null || picture.CullRect.Width <= 0 || picture.CullRect.Height <= 0)
         {

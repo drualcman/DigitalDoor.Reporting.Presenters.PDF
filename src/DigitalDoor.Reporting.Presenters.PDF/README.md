@@ -50,7 +50,7 @@ Browsers draw very thin `double` borders as solid and the PDF does the same.
 - Backgrounds, opacity (`FontDetails.ColorSize.Opacity`), rotation around the centre of the cell (`Angle`) and z-order (`Foreground`).
 - Fonts with name, size in points, colour, weight and italic. Text alignment (including justify) and decoration (underline, line-through, overline).
 - Text is wrapped inside the width of the cell and the lines that do not fit in the height are not drawn.
-- Images as `byte[]`, base64 `string`, data URI, `JsonElement` (for example when the view model comes from a Blazor WebAssembly client), `SKImage`, `SKBitmap`, `SKPicture` and SVG. SVG images are drawn as vectors.
+- Images as `byte[]`, base64 `string`, data URI, `JsonElement` (for example when the view model comes from a Blazor WebAssembly client), `SKImage`, `SKBitmap`, `SKPicture` and SVG. SVG images are drawn as vectors, and their text uses the same fonts as the rest of the report (see Fonts), so charts and labels inside an SVG are also drawn in Linux, Docker and Blazor WebAssembly.
 
 ## Fonts
 The font of each cell is resolved in this order:
@@ -80,8 +80,8 @@ Without fontconfig only the embedded font and the fonts from `IReportFont` are a
 
 If you prefer to use the fonts installed in the container, replace the native assets in your application:
 ```xml
-<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.1" />
-<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.119.1" ExcludeAssets="all" />
+<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="4.153.0" />
+<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.153.0" ExcludeAssets="all" />
 ```
 ```dockerfile
 # Debian or Ubuntu images

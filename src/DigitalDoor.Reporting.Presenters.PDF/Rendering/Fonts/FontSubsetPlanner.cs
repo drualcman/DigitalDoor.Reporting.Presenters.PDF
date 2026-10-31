@@ -12,13 +12,14 @@ internal static class FontSubsetPlanner
             string cellText = GetDrawnText(cell);
             if (!string.IsNullOrWhiteSpace(cellText))
             {
-                SKTypeface typeface = typefaces.GetTypeface(cell.Format.FontDetails ?? new Font()).Typeface;
-                if (!usedTextByTypeface.TryGetValue(typeface, out StringBuilder usedText))
+                AddUsedText(usedTextByTypeface, typefaces.GetTypeface(cell.Format.FontDetails ?? new Font()).Typeface, cellText);
+            }
+            if (cell.Pagination == ReportCellPagination.None && cell.Value?.Kind == ReportCellValueKind.SvgImage)
+            {
+                foreach (SvgTextRun textRun in SvgTextCollector.Collect(cell.Value.Svg))
                 {
-                    usedText = new StringBuilder();
-                    usedTextByTypeface[typeface] = usedText;
+                    AddUsedText(usedTextByTypeface, typefaces.GetTypeface(textRun.Font).Typeface, textRun.Text);
                 }
-                usedText.Append(cellText);
             }
         }
         foreach (KeyValuePair<SKTypeface, StringBuilder> typefaceText in usedTextByTypeface)
@@ -29,6 +30,16 @@ internal static class FontSubsetPlanner
                 typefaces.ReplaceTypeface(typefaceText.Key, subsetTypeface);
             }
         }
+    }
+
+    private static void AddUsedText(Dictionary<SKTypeface, StringBuilder> usedTextByTypeface, SKTypeface typeface, string text)
+    {
+        if (!usedTextByTypeface.TryGetValue(typeface, out StringBuilder usedText))
+        {
+            usedText = new StringBuilder();
+            usedTextByTypeface[typeface] = usedText;
+        }
+        usedText.Append(text);
     }
 
     private static SKTypeface CreateSubsetTypefaceOrNull(SKTypeface typeface, string usedText)

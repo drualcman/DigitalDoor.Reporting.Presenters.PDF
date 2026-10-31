@@ -13,6 +13,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageTags>reporting; pdf; skiasharp; blazor; blazor webaassembly; blazor server; MVC; webapi</PackageTags>
 		<PackageReleaseNotes>
+			2026-09-30: The PDF does not fail when the page, sections or their formats and rows are null. The text of SVG images uses the same fonts as the report (IReportFont, installed fonts and the embedded Liberation Sans) and is subset, so it is drawn in Linux, Docker and Blazor WebAssembly and the PDF stays small. Update DigitalDoor.Reporting to 1.18.1.
 			2026-09-29: BREAKING VISUAL CHANGES. Replaced iText with SkiaSharp and license changed from AGPL-3.0 to MIT. Public API unchanged. Page size uses real ISO points (72 per inch). Page margins and paddings are applied and sections are stacked from the top of the page like the HTML view. Font size is in points like the HTML view. Text is wrapped and clipped inside the cell. Rotation is around the centre of the cell. SVG images are drawn as vectors. Fonts are embedded in the PDF with Unicode support and Liberation Sans is included as fallback font. Text decoration and page background are now rendered. Fixed CurrentPage and TotalPages in header, body and footer (NullReferenceException and wrong total). Fixed base64 images (InvalidCastException). Fixed infinite loop when the row is higher than the body. Fixed custom fonts with concurrent reports. Errors with fonts and images are not hidden anymore. Linux and Blazor WebAssembly native assets included.
 			2025-12-16: Fixed N blank pages. Update dependencies.
 			2025-12-15: Add support NET 10. Update dependencies.
@@ -28,7 +29,7 @@
 			2024-05-12: Add missing dependency from itext7.bouncy-castle-adapter.
 			2024-05-11: Splited from DigitalDoor Reporting to follow SPR and OCR to avoid unnecesary dependencies in the main project.
 		</PackageReleaseNotes>
-		<Version>1.18.0</Version>
+		<Version>1.18.1</Version>
 		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.PDF</RepositoryUrl>
 		<Title>Generate pdf from code using clean architecture</Title>
 		<RepositoryType>git</RepositoryType>
@@ -36,7 +37,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DigitalDoor.Reporting" Version="1.18.0" />
+		<PackageReference Include="DigitalDoor.Reporting" Version="1.18.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.20" Condition="'$(TargetFramework)' == 'net9.0'" />

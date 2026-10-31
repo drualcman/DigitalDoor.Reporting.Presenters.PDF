@@ -21,12 +21,12 @@ internal sealed class ReportImageResolver
         return image;
     }
 
-    private static Func<ReportImage> GetImageFactory(ReportCellValue value, string columnDescription)
+    private Func<ReportImage> GetImageFactory(ReportCellValue value, string columnDescription)
     {
         Func<ReportImage> createImage = value.Kind switch
         {
             ReportCellValueKind.RasterImage => () => ReportImageDecoder.DecodeRaster(value.RasterImage, columnDescription),
-            ReportCellValueKind.SvgImage => () => ReportImageDecoder.DecodeSvg(value.Svg, columnDescription),
+            ReportCellValueKind.SvgImage => () => ReportImageDecoder.DecodeSvg(value.Svg, columnDescription, Context.SvgTypefaces),
             ReportCellValueKind.Other => GetDrawingObjectFactory(value.SourceValue),
             _ => null
         };

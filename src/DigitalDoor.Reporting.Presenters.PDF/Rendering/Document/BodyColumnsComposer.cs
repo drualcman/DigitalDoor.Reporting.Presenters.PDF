@@ -25,7 +25,7 @@ internal sealed class BodyColumnsComposer
                 double rowLeft = BodyLayout.ContentLeft + columnIndex * columnStep;
                 double rowTop = BodyLayout.ContentTop + rowIndex * rowDimension.Height;
                 LayoutBox rowBox = new LayoutBox(rowLeft, rowTop, rowDimension.Width, rowDimension.Height);
-                BorderDrawer.Draw(canvas, CellGeometry.ToPoints(rowBox), Body.Row?.Borders);
+                BorderDrawer.Draw(canvas, CellGeometry.ToPoints(rowBox), Body?.Row?.Borders);
                 CellDrawer.DrawCells(canvas, columnRows[rowIndex].Cells, rowLeft, rowTop, page);
             }
         }
